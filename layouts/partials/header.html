@@ -8,7 +8,7 @@
         <li><a href="{{ .Site.BaseURL | default '/' }}">Cheat-sheets</a></li>
         {{ range .Site.Menus.main }}
           <li>
-            <a href="{{ .URL | relURL }}">
+            <a href="{{ .URL | absURL }}">
               {{ .Pre }}
               <span>{{ .Name }}</span>
             </a>
