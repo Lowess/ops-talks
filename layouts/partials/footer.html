@@ -1,0 +1,12 @@
+<footer id="footer">
+  <p>
+    <small></small>
+      <span>{{ with .Site.Params.copyright }}{{.}}{{ else }}&copy; {{ now.Format "2006"}} <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a> {{end}}</span>
+      <span>By Florian Dambrine with <a rel="nofollow" target="_blank" href="https://gohugo.io">Hugo</a></span>
+      <span>Theme <a rel="nofollow" target="_blank" href="https://github.com/wayjam/hugo-theme-mixedpaper">Mixedpaper</a></span>
+    </small>
+  </p>
+
+  {{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
+  <script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous" async></script>
+</footer>
