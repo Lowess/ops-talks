@@ -27,7 +27,7 @@
   
   
   
-  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.f16e9f748d79028642a04f2ed748004739122dcb89bc85d2f9432b468b2045de.css" integrity="sha256-8W6fdI15AoZCoE8u10gARzkSLcuJvIXS&#43;UMrRosgRd4=" />
+  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.06a5915c3a194f9e4ad6b767cbab0aa1eb6eac18f2fe516756c28a94988550e8.css" integrity="sha256-BqWRXDoZT55K1rdny6sKoeturBjy/lFnVsKKlJiFUOg=" />
 
   
   
@@ -100,7 +100,93 @@
 </span><span class="s1">    -v &#34;${GIT_WORKSPACE}:/modules&#34; \
 </span><span class="s1">    -w /terragrunt \
 </span><span class="s1">    lowess/terragrunt:0.12.29&#39;</span>
-</code></pre></div>
+</code></pre></div><h3 id="20-bypass-terragrunt-module-and-use-plain-terraform-file-instead">2.0 Bypass Terragrunt module and use plain Terraform file instead</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="hl"><span class="lnt">15
+</span></span><span class="hl"><span class="lnt">16
+</span></span><span class="hl"><span class="lnt">17
+</span></span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-hcl" data-lang="hcl"><span class="c1">### terragrunt.hcl
+</span><span class="c1"># ---------------------------------------------------------------------------------------------------------------------
+</span><span class="c1"># TERRAGRUNT CONFIGURATION
+</span><span class="c1"># This is the configuration for Terragrunt, a thin wrapper for Terraform that supports locking and enforces best
+</span><span class="c1"># practices: https://github.com/gruntwork-io/terragrunt
+</span><span class="c1"># ---------------------------------------------------------------------------------------------------------------------
+</span><span class="c1"></span>
+<span class="k">locals</span> {<span class="c1">
+</span><span class="c1">  # Automatically load environment-level variables
+</span><span class="c1"></span><span class="n">  environment_vars</span> <span class="o">=</span> <span class="k">read_terragrunt_config</span><span class="p">(</span><span class="k">find_in_parent_folders</span><span class="p">(</span><span class="s2">&#34;env.hcl&#34;</span><span class="p">))</span><span class="c1">
+</span><span class="c1">
+</span><span class="c1">  # Extract out common variables for reuse
+</span><span class="c1"></span><span class="n">  env</span> <span class="o">=</span> <span class="k">local</span><span class="p">.</span><span class="k">environment_vars</span><span class="p">.</span><span class="k">locals</span><span class="p">.</span><span class="k">environment</span>
+}<span class="c1">
+</span><span class="hl"><span class="c1">
+</span></span><span class="hl"><span class="c1"># Terragrunt will not attempt to fetch a module as the terraform block bellow is empty
+</span></span><span class="hl"><span class="c1"># it will instead execute bare *.tf files found in the folder
+</span></span><span class="c1"></span><span class="k">terraform</span> {}<span class="c1">
+</span><span class="c1">
+</span><span class="c1"># Include all settings from the root terragrunt.hcl file
+</span><span class="c1"></span><span class="k">include</span> {
+<span class="n">  path</span> <span class="o">=</span> <span class="k">find_in_parent_folders</span><span class="p">()</span>
+}<span class="c1">
+</span><span class="c1">
+</span><span class="c1"># These are the variables we have to pass in to use the module specified in the terragrunt configuration above
+</span><span class="c1"></span><span class="n">inputs</span> <span class="o">=</span> {}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Create a <code>&lt;filename&gt;.tf</code> file for example <code>main.tf</code>:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-hcl" data-lang="hcl"><span class="c1">### main.tf
+</span><span class="c1"></span>
+<span class="k">variable</span> <span class="s2">&#34;aws_region&#34;</span> {}
+
+<span class="k">provider</span> <span class="k">aws</span> {
+<span class="n">  region</span> <span class="o">=</span> <span class="k">var</span><span class="p">.</span><span class="k">aws_region</span>
+}
+
+<span class="k">resource</span> <span class="s2">&#34;...&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
       </div>
       <div class="info post_meta">
         <time datetime=2020-08-26T02:46:23&#43;0800 class="date">Wednesday, August 26, 2020</time>
@@ -149,7 +235,7 @@
     </small>
   </p>
 
-  <script src="https://lowess.github.io/ops-talks/js/main.min.8b182175f5874aeed0acc0979345c98d4bde22208ec4f36cc1d6e3102acb4b10.js" integrity="sha256-ixghdfWHSu7QrMCXk0XJjUveIiCOxPNswdbjECrLSxA=" crossorigin="anonymous" async></script>
+  <script src="https://lowess.github.io/ops-talks/js/main.min.c6c86ca803000cf08f521fffe0c1aecfa94fbe8765144c590dab0132a347174d.js" integrity="sha256-xshsqAMADPCPUh//4MGuz6lPvodlFExZDasBMqNHF00=" crossorigin="anonymous" async></script>
 </footer>
 
     </body>
