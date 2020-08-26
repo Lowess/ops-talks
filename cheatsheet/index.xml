@@ -103,64 +103,7 @@
 &lt;li&gt;Computed S3 storage:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;s3://terraform-state-verity-gumgum-ai-us-east-1/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terraform.tfstate
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;12-repository-layout&#34;&gt;1.2 Repository Layout&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Path&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Values&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/modules&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Directory containing a list of &lt;a href=&#34;https://www.terraform.io/docs/modules/index.html&#34;&gt;Terraform modules&lt;/a&gt; (building blocks)&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;Must follow [a-z-]+ naming convention&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/terragrunt/&amp;lt;account&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Project root directory for resources located and provisioned in the given &lt;code&gt;&amp;lt;account&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;gumgum-ads&lt;/code&gt;, &lt;code&gt;gumgum-ai&lt;/code&gt;, &lt;code&gt;gumgum-sports&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/terragrunt/&amp;lt;account&amp;gt;/&amp;lt;region&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Directory for resources provisioned in the given &lt;code&gt;&amp;lt;region&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;virginia&lt;/code&gt;, &lt;code&gt;oregon&lt;/code&gt;, &lt;code&gt;ireland&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/terragrunt/&amp;lt;account&amp;gt;/&amp;lt;region&amp;gt;/&amp;lt;env&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Directory for resources provisioned in the given &lt;code&gt;&amp;lt;env&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;prod&lt;/code&gt;, &lt;code&gt;stage&lt;/code&gt;, &lt;code&gt;dev&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/terragrunt/&amp;lt;account&amp;gt;/&amp;lt;region&amp;gt;/&amp;lt;env&amp;gt;/&amp;lt;product&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Directory for resources linked to a &lt;code&gt;&amp;lt;product&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;verity-api&lt;/code&gt;, &lt;code&gt;mle-inference&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;terraform/terragrunt/&amp;lt;account&amp;gt;/&amp;lt;region&amp;gt;/&amp;lt;env&amp;gt;/&amp;lt;product&amp;gt;/&amp;lt;component&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Infrastructure &lt;code&gt;&amp;lt;component&amp;gt;&lt;/code&gt; of a &lt;code&gt;&amp;lt;product&amp;gt;&lt;/code&gt;. A &lt;code&gt;&amp;lt;component&amp;gt;&lt;/code&gt; name is usually made of the AWS service it refers to or the software it installs followed by a &lt;code&gt;&amp;lt;component&amp;gt;&lt;/code&gt; string identifier&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;dynamodb-verity-pages&lt;/code&gt;, &lt;code&gt;kafka-cluster&lt;/code&gt;, &lt;code&gt;s3-coverage&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;13-local-development&#34;&gt;1.3 Local development&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Create the `tf` alias that will spin up a docker container&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;# with all the tooling required to operate Verity infrastructure&lt;/span&gt;
-
-&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GIT_WORKSPACE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/Workspace&amp;#34;&lt;/span&gt;
-
-&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;docker run -it --rm \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.aws:/root/.aws \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.ssh:/root/.ssh \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.kube:/root/.kube \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v &amp;#34;$(pwd):/terragrunt&amp;#34; \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v &amp;#34;${GIT_WORKSPACE}:/modules&amp;#34; \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -w /terragrunt \
-&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    lowess/terragrunt:0.12.29&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

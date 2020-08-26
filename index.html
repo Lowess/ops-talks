@@ -172,64 +172,7 @@
 <li>Computed S3 storage:</li>
 </ul>
 <pre><code>s3://terraform-state-verity-gumgum-ai-us-east-1/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terraform.tfstate
-</code></pre><h3 id="12-repository-layout">1.2 Repository Layout</h3>
-<table>
-<thead>
-<tr>
-<th>Path</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>terraform/modules</code></td>
-<td>Directory containing a list of <a href="https://www.terraform.io/docs/modules/index.html">Terraform modules</a> (building blocks)</td>
-<td><code>Must follow [a-z-]+ naming convention</code></td>
-</tr>
-<tr>
-<td><code>terraform/terragrunt/&lt;account&gt;</code></td>
-<td>Project root directory for resources located and provisioned in the given <code>&lt;account&gt;</code></td>
-<td><code>gumgum-ads</code>, <code>gumgum-ai</code>, <code>gumgum-sports</code></td>
-</tr>
-<tr>
-<td><code>terraform/terragrunt/&lt;account&gt;/&lt;region&gt;</code></td>
-<td>Directory for resources provisioned in the given <code>&lt;region&gt;</code></td>
-<td><code>virginia</code>, <code>oregon</code>, <code>ireland</code></td>
-</tr>
-<tr>
-<td><code>terraform/terragrunt/&lt;account&gt;/&lt;region&gt;/&lt;env&gt;</code></td>
-<td>Directory for resources provisioned in the given <code>&lt;env&gt;</code></td>
-<td><code>prod</code>, <code>stage</code>, <code>dev</code></td>
-</tr>
-<tr>
-<td><code>terraform/terragrunt/&lt;account&gt;/&lt;region&gt;/&lt;env&gt;/&lt;product&gt;</code></td>
-<td>Directory for resources linked to a <code>&lt;product&gt;</code></td>
-<td><code>verity-api</code>, <code>mle-inference</code></td>
-</tr>
-<tr>
-<td><code>terraform/terragrunt/&lt;account&gt;/&lt;region&gt;/&lt;env&gt;/&lt;product&gt;/&lt;component&gt;</code></td>
-<td>Infrastructure <code>&lt;component&gt;</code> of a <code>&lt;product&gt;</code>. A <code>&lt;component&gt;</code> name is usually made of the AWS service it refers to or the software it installs followed by a <code>&lt;component&gt;</code> string identifier</td>
-<td><code>dynamodb-verity-pages</code>, <code>kafka-cluster</code>, <code>s3-coverage</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="13-local-development">1.3 Local development</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create the `tf` alias that will spin up a docker container</span>
-<span class="c1"># with all the tooling required to operate Verity infrastructure</span>
-
-<span class="nb">export</span> <span class="nv">GIT_WORKSPACE</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/Workspace&#34;</span>
-
-<span class="nb">alias</span> <span class="nv">tf</span><span class="o">=</span><span class="s1">&#39;docker run -it --rm \
-</span><span class="s1">    -v ~/.aws:/root/.aws \
-</span><span class="s1">    -v ~/.ssh:/root/.ssh \
-</span><span class="s1">    -v ~/.kube:/root/.kube \
-</span><span class="s1">    -v &#34;$(pwd):/terragrunt&#34; \
-</span><span class="s1">    -v &#34;${GIT_WORKSPACE}:/modules&#34; \
-</span><span class="s1">    -w /terragrunt \
-</span><span class="s1">    lowess/terragrunt:0.12.29&#39;</span>
-</code></pre></div>
+</code></pre>
         
           <span class="hellip">&hellip;</span>
         
