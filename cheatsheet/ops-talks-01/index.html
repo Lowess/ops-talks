@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>
+    Ops-Talks #01 | Ops-Talks
+  </title>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/ops-talks/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/ops-talks/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/ops-talks/favicon-16x16.png" />
+  <link rel="manifest" href="/ops-talks/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+
+  
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-normalize@0.6.0/modern-normalize.css"
+  />
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.f16e9f748d79028642a04f2ed748004739122dcb89bc85d2f9432b468b2045de.css" integrity="sha256-8W6fdI15AoZCoE8u10gARzkSLcuJvIXS&#43;UMrRosgRd4=" />
+
+  
+  
+    
+  
+</head>
+
+    <body>
+        <header id="header">
+  <div class="header_container">
+    <h1 class="sitetitle">
+      <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a>
+    </h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="https://lowess.github.io/ops-talks/">Cheat-sheets</a></li>
+        
+          <li>
+            <a href="/ops-talks/ops-talks/about/">
+              
+              <span>About</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ops-talks/ops-talks/tags/">
+              
+              <span>Tags</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="/ops-talks/ops-talks/archives/">
+              
+              <span>Archives</span>
+            </a>
+          </li>
+        
+        <li class="hide-sm"><a href="https://lowess.github.io/ops-talks/index.xml" type="application/rss+xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+        
+<section id="main">
+  <article class="post content">
+    
+    <div class="slides">
+      <iframe src="https://slides.com/floriandambrine/ops-talks-01-terraform/embed?style=light" width="100%" height="420" scrolling="no" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+    
+
+    <div class="cheatsheet">
+      <h2 class="title">Ops-Talks #01</h2>
+      <div class="post_content">
+        <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Hello, World!&#34;</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-kotlin" data-lang="kotlin"><span class="k">package</span> <span class="nn">hello</span>
+
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+  <span class="n">println</span><span class="p">(</span><span class="s">&#34;Hello World!&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cm">/* Hello */</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Hello, World!&#34;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// &#39;Hello World!&#39; program
+</span><span class="c1"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Hello World!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(){</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Hello, World!&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  Hello, World!
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="nx">fmt</span> <span class="s">&#34;fmt&#34;</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Hello, World!\n&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">object</span> <span class="nc">HelloWorld</span> <span class="k">with</span> <span class="nc">Application</span> <span class="o">{</span>
+  <span class="nc">Console</span><span class="o">.</span><span class="n">println</span><span class="o">(</span><span class="s">&#34;Hello, World!&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+  <span class="k">echo</span> <span class="s1">&#39;Hello, World!&#39;</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">hello-world</span>
+  <span class="s">&#34;A function print &#39;Hello world&#39;.&#34;</span>
+  <span class="p">[]</span>
+  <span class="p">(</span><span class="nb">prn </span><span class="s">&#34;Hello world&#34;</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="cp">{{</span><span class="w"> </span><span class="na">.Content</span><span class="w"> </span><span class="cp">}}</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="cp">{{</span><span class="w"> </span><span class="nx">partial</span><span class="w"> </span><span class="s">&#34;header.html&#34;</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="cp">}}</span>
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>posts<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="nx">10</span><span class="w"> </span><span class="na">.Data.Pages</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">eq</span><span class="w"> </span><span class="na">.Type</span><span class="w"> </span><span class="s">&#34;post&#34;</span><span class="cp">}}</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Permalink</span><span class="w"> </span><span class="cp">}}</span><span class="s">&#34;</span><span class="p">&gt;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+  <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>pages<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="na">.Data.Pages</span><span class="w"> </span><span class="cp">}}</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="o">(</span><span class="k">eq</span><span class="w"> </span><span class="na">.Type</span><span class="w"> </span><span class="s">&#34;page&#34;</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="k">eq</span><span class="w"> </span><span class="na">.Type</span><span class="w"> </span><span class="s">&#34;about&#34;</span><span class="o">)</span><span class="w"> </span><span class="cp">}}</span>
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Permalink</span><span class="w"> </span><span class="cp">}}</span><span class="s">&#34;</span><span class="p">&gt;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Type</span><span class="w"> </span><span class="cp">}}</span> - <span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span> - <span class="cp">{{</span><span class="w"> </span><span class="na">.RelPermalink</span><span class="w"> </span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+  <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+
+<span class="cp">{{</span><span class="w"> </span><span class="nx">partial</span><span class="w"> </span><span class="s">&#34;footer.html&#34;</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="cp">}}</span>
+</code></pre></div><hr>
+<p>Detect the language</p>
+<pre><code>package hello
+
+fun main(args: Array&lt;String&gt;) {
+  println(&quot;Hello World!&quot;)
+}
+</code></pre><pre><code>&lt;?php
+  echo 'Hello, World!';
+?&gt;
+</code></pre><hr>
+<p>By <code>{{&lt; highlight go-html-template &quot;linenos=table,hl_lines=1 3-7,linenostart=199&quot; &gt;}}..{{&lt; / highlight &gt;}}</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="hl"><span class="lnt">199
+</span></span><span class="lnt">200
+</span><span class="hl"><span class="lnt">201
+</span></span><span class="hl"><span class="lnt">202
+</span></span><span class="hl"><span class="lnt">203
+</span></span><span class="hl"><span class="lnt">204
+</span></span><span class="hl"><span class="lnt">205
+</span></span><span class="lnt">206
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go-html-template" data-lang="go-html-template"><span class="hl"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+</span>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="hl">   <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span><span class="cp">{{</span><span class="w"> </span><span class="na">.Title</span><span class="w"> </span><span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span class="hl">    <span class="cp">{{</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="na">.Data.Pages</span><span class="w"> </span><span class="cp">}}</span>
+</span><span class="hl">        <span class="cp">{{</span><span class="w"> </span><span class="na">.Render</span><span class="w"> </span><span class="s">&#34;summary&#34;</span><span class="cp">}}</span>
+</span><span class="hl">    <span class="cp">{{</span><span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="cp">}}</span>
+</span><span class="hl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+      </div>
+      <div class="info post_meta">
+        <time datetime=2020-04-30T16:01:23&#43;0800 class="date">Thursday, April 30, 2020</time>
+        
+          <ul class="tags">
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/01">01</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/cheatsheet">cheatsheet</a> </li>
+          
+          </ul>
+        
+        
+      </div>
+      <div class="clearfix"></div>
+    </article>
+    
+      <div class="other_posts">
+        
+        
+      </div>
+      <aside id="comments">
+</aside>
+
+    
+    </div>
+</section>
+
+        <a id="back_to_top" title="Go To Top" href="#">
+  <span>
+    <svg viewBox="0 0 24 24">
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+    </svg>
+  </span>
+</a>
+
+        <footer id="footer">
+  <p>
+    <small></small>
+      <span>&copy; 2020 <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a> </span>
+      <span>By Florian Dambrine with <a rel="nofollow" target="_blank" href="https://gohugo.io">Hugo</a></span>
+      <span>Theme <a rel="nofollow" target="_blank" href="https://github.com/wayjam/hugo-theme-mixedpaper">Mixedpaper</a></span>
+    </small>
+  </p>
+
+  <script src="https://lowess.github.io/ops-talks/js/main.min.8b182175f5874aeed0acc0979345c98d4bde22208ec4f36cc1d6e3102acb4b10.js" integrity="sha256-ixghdfWHSu7QrMCXk0XJjUveIiCOxPNswdbjECrLSxA=" crossorigin="anonymous" async></script>
+</footer>
+
+    </body>
+</html>
