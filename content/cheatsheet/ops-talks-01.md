@@ -66,6 +66,9 @@ terragrunt/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terragrunt.hcl
 ```
 s3://terraform-state-verity-gumgum-ai-us-east-1/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terraform.tfstate
 ```
+
+<!--more-->
+
 ### 1.2 Repository Layout
 
 | Path  | Description | Values |
@@ -96,8 +99,6 @@ alias tf='docker run -it --rm \
     -w /terragrunt \
     lowess/terragrunt:0.12.29'
 ```
-
-<!--more-->
 
 ---
 
