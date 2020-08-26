@@ -49,21 +49,21 @@
         <li><a href="https://lowess.github.io/ops-talks/">Cheat-sheets</a></li>
         
           <li>
-            <a href="/ops-talks/ops-talks/about/">
+            <a href="https://lowess.github.io/ops-talks/about/">
               
               <span>About</span>
             </a>
           </li>
         
           <li>
-            <a href="/ops-talks/ops-talks/tags/">
+            <a href="https://lowess.github.io/ops-talks/tags/">
               
               <span>Tags</span>
             </a>
           </li>
         
           <li>
-            <a href="/ops-talks/ops-talks/archives/">
+            <a href="https://lowess.github.io/ops-talks/archives/">
               
               <span>Archives</span>
             </a>
@@ -81,17 +81,26 @@
     
     
     <article class="post content">
-      <time datetime="2020-04-30T16:01:23&#43;0800" class="date">Thu, Apr 30, 2020</time>
+      <time datetime="2020-08-26T02:46:23&#43;0800" class="date">Wed, Aug 26, 2020</time>
       <h3 class="title">
         <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-01/" title="Ops-Talks #01">Ops-Talks #01</a>
       </h3>
       <div class="post_content summary">
-        <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">helloWorld</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Hello, World!&#34;</span><span class="p">)</span>
-<span class="p">}</span>
+        <h3 id="10-development">1.0 Development</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create the `tf` alias that will spin up a docker container</span>
+<span class="c1"># with all the tooling required to operate Verity infrastructure</span>
+
+<span class="nb">export</span> <span class="nv">GIT_WORKSPACE</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/Workspace&#34;</span>
+
+<span class="nb">alias</span> <span class="nv">tf</span><span class="o">=</span><span class="s1">&#39;docker run -it --rm \
+</span><span class="s1">    -v ~/.aws:/root/.aws \
+</span><span class="s1">    -v ~/.ssh:/root/.ssh \
+</span><span class="s1">    -v ~/.kube:/root/.kube \
+</span><span class="s1">    -v &#34;$(pwd):/terragrunt&#34; \
+</span><span class="s1">    -v &#34;${GIT_WORKSPACE}:/modules&#34; \
+</span><span class="s1">    -w /terragrunt \
+</span><span class="s1">    lowess/terragrunt:0.12.29&#39;</span>
 </code></pre></div>
-        
-          <span class="hellip">&hellip;</span>
         
       </div>
     </article>

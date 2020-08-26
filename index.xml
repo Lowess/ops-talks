@@ -14,12 +14,23 @@
     <item>
       <title>Ops-Talks #01</title>
       <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-01/</link>
-      <pubDate>Thu, 30 Apr 2020 16:01:23 +0800</pubDate>
+      <pubDate>Wed, 26 Aug 2020 02:46:23 +0800</pubDate>
       
       <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-01/</guid>
-      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;helloWorld&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;alert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello, World!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      <description>&lt;h3 id=&#34;10-development&#34;&gt;1.0 Development&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Create the `tf` alias that will spin up a docker container&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# with all the tooling required to operate Verity infrastructure&lt;/span&gt;
+
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;GIT_WORKSPACE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HOME&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/Workspace&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;docker run -it --rm \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.aws:/root/.aws \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.ssh:/root/.ssh \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v ~/.kube:/root/.kube \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v &amp;#34;$(pwd):/terragrunt&amp;#34; \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -v &amp;#34;${GIT_WORKSPACE}:/modules&amp;#34; \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    -w /terragrunt \
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    lowess/terragrunt:0.12.29&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
