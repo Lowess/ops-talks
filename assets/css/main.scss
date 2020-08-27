@@ -16,7 +16,14 @@ body {
 }
 
 a {
-  color: $theme-fg-secondary
+  color: $theme-fg-secondary;
+}
+
+.readmore {
+  color: $theme-fg-main;
+  border: 4px solid $theme-fg-main;
+  background-color: $theme-fg-secondary;
+  padding: 10px;
 }
 
 /* Header */
@@ -498,7 +505,15 @@ a {
     margin: 0.8em 0;
 
     a {
+      padding: 0px 50% 0px 10px;
       color: $theme-fg-secondary;
+      border: 0;
+    }
+
+    a:hover {
+      padding: 0px 50% 0px 10px;
+      background-color: $theme-fg-secondary;
+      color: $theme-fg-main;
       border: 0;
     }
   }

@@ -13,7 +13,9 @@ slide: https://slides.com/floriandambrine/ops-talks-01-terraform
 
 > Terragrunt repository layout dictates where its corresponding `terraform tfstate` file will be stored. Moving an existing component folder should result in moving it's states along to the corresponding path in S3.
 
-The main `terragrunt.hcl` file under the root of the repo uses a dynamic variable lookups to determine `aws_region` / `product_name` / `account_name`
+* The main `terragrunt.hcl` file under the root of the repo uses a dynamic variable lookups to determine `aws_region` / `product_name` / `account_name`
+
+<!--more-->
 
 ```hcl {linenos=table,hl_lines=["15-16"],linenostart=1}
 ### <repo>/terragrunt/terragrunt.hcl
@@ -47,8 +49,6 @@ remote_state {
 }
 ```
 
-For example:
-
 * Ran `terragrunt plan` from:
 ```
 terragrunt/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terragrunt.hcl
@@ -66,8 +66,6 @@ terragrunt/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terragrunt.hcl
 ```
 s3://terraform-state-verity-gumgum-ai-us-east-1/gumgum-ai/virginia/prod/mle/ecs-cluster/ecs/terraform.tfstate
 ```
-
-<!--more-->
 
 ### 1.2 Repository Layout
 
@@ -100,6 +98,20 @@ alias tf='docker run -it --rm \
     lowess/terragrunt:0.12.29'
 ```
 
+### 1.4 Override Terragrunt module
+
+```bash  {linenos=table,hl_lines=["9"],linenostart=1}
+### Terminal Laptop
+$ cd ${GIT_WORKSPACE}/verity-infra-ops/terraform/terragrunt
+$ tf
+
+### Entered docker container
+/terragrunt $ cd <path-to-component-you-want-to-test>
+
+### Plan with terragrunt module override (point to local)
+/terragrunt $ terragrunt plan --terragrunt-source /modules/terraform-verity-modules//<somemodule>
+
+```
 ---
 
 ### 2.1 Bypass Terragrunt module and use plain Terraform file instead
