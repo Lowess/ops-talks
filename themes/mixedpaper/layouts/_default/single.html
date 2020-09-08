@@ -10,6 +10,21 @@
     {{ end }}
 
     <div class="cheatsheet">
+
+      {{ if .Params.article }}
+        <div class="articles">
+          <h3>Recommended articles</h3>
+          <p>
+            <a href="{{ .Params.article.link }}" target="blank">
+              <img src="{{ .Params.article.logo | absURL  }}" height="40px"/>
+              {{ .Params.article.title }}
+            </a>
+          </p>
+        </div>
+
+        <hr />
+        {{ end }}
+
       {{ .TableOfContents }}
 
       <h2 class="title">{{ .Title }}</h2>

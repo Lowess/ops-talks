@@ -6,6 +6,7 @@ $theme-fg-main: #fff;
 $theme-fg-secondary: #dc3c3c;
 
 $theme-bg-highlight: rgba(110,235,131, 0.3);;
+$theme-bg-secondary: rgba(238,238,238, 0.5);
 $theme-bg-dark: #111;
 
 body {
@@ -359,6 +360,13 @@ a {
 
 .cheatsheet {
     padding: 0.5em 2em;
+}
+
+.articles {
+  background-color: $theme-bg-secondary;
+  border: 3px dotted $theme-fg-secondary;
+  padding: 20px;
+  height: 100px;
 }
 
 .content {

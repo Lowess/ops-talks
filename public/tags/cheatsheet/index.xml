@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cheatsheet on Ops-Talks</title>
+    <link>https://example.com/tags/cheatsheet/</link>
+    <description>Recent content in cheatsheet on Ops-Talks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Aug 2020 02:46:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ops-Talks #01</title>
+      <link>https://example.com/cheatsheet/ops-talks-01/</link>
+      <pubDate>Wed, 26 Aug 2020 02:46:23 +0800</pubDate>
+      
+      <guid>https://example.com/cheatsheet/ops-talks-01/</guid>
+      <description>&lt;h3 id=&#34;11-terraform-state&#34;&gt;1.1 Terraform &lt;code&gt;state&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Terragrunt repository layout dictates where its corresponding &lt;code&gt;terraform tfstate&lt;/code&gt; file will be stored. Moving an existing component folder should result in moving it&amp;rsquo;s states along to the corresponding path in S3.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;The main &lt;code&gt;terragrunt.hcl&lt;/code&gt; file under the root of the repo uses a dynamic variable lookups to determine &lt;code&gt;aws_region&lt;/code&gt; / &lt;code&gt;product_name&lt;/code&gt; / &lt;code&gt;account_name&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ops-Talks #02</title>
+      <link>https://example.com/cheatsheet/ops-talks-02/</link>
+      <pubDate>Wed, 26 Aug 2020 02:46:23 +0800</pubDate>
+      
+      <guid>https://example.com/cheatsheet/ops-talks-02/</guid>
+      <description>Hello Aurel Hello Aurel Hello Aurel Hello Aurel hello</description>
+    </item>
+    
+  </channel>
+</rss>

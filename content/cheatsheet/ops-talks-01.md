@@ -7,6 +7,10 @@ categories: ["Syntax Highlighting"]
 toc: false
 type: "cheatsheet"
 slide: https://slides.com/floriandambrine/ops-talks-01-terraform
+article:
+  title: Stop being selfish - Open up Terraform to your team with Atlantis
+  logo: medium.png
+  link: https://medium.com/gumgum-tech/stop-being-selfish-open-up-terraform-to-your-team-with-atlantis-9b21f40fd73e
 ---
 
 ### 1.1 Terraform `state`
