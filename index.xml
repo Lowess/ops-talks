@@ -27,12 +27,14 @@
     </item>
     
     <item>
-      <title>About Ops-Talks</title>
+      <title>About</title>
       <link>https://lowess.github.io/ops-talks/about/</link>
       <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lowess.github.io/ops-talks/about/</guid>
-      <description>Ops-Talks comes from a desire to knowledge transfert +6 years worth of Ops knowledge / practice / tips &amp;amp; tricks to my fellow GumGum teammates.</description>
+      <description>About Ops-Talks  Ops-Talks comes from a desire to knowledge transfert +6 years worth of Ops knowledge / practice / tips &amp;amp; tricks to my fellow GumGum teammates.
+  About Me I am a Principal Engineer graduated from UTC (University of Technology of Compiègne FRANCE) working as part of the Machine Learning Engineering team at GumGum, a digital marketing platform for the visual web based in Santa Monica (CA).
+Over all, I love evolving with cutting edges technologies in order to tackle new challenges at scale !</description>
     </item>
     
   </channel>
