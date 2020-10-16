@@ -15,3 +15,5 @@ title: "About"
 I am a Principal Engineer graduated from [UTC (University of Technology of Compiègne FRANCE)](https://www.utc.fr/en.html) working as part of the Machine Learning Engineering team at [GumGum](https://gumgum.com), a digital marketing platform for the visual web based in Santa Monica (CA).
 
 Over all, I love evolving with cutting edges technologies in order to tackle new challenges at scale !
+
+What to learn more about myself... Give a tour to ![http://floriandambrine.com](http://floriandambrine.com/)
