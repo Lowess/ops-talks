@@ -22,6 +22,7 @@ steps:
         from_secret: github_ssh_key
       pages_directory: public/
     when:
+      event: push
       branch: master
 
   - name: display_urls
@@ -38,6 +39,6 @@ steps:
         -
           - "Custom Domain"
           - $BASE_URL
-
     when:
+      event: push
       branch: master
