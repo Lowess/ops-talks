@@ -3,13 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lowess.github.io/ops-talks/tags/avro/</loc>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lowess.github.io/ops-talks/tags/cheatsheet/</loc>
-    <lastmod>2020-08-26T02:46:23+08:00</lastmod>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://lowess.github.io/ops-talks/cheatsheet/</loc>
-    <lastmod>2020-08-26T02:46:23+08:00</lastmod>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-02/</loc>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lowess.github.io/ops-talks/tags/ops-talks-02/</loc>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lowess.github.io/ops-talks/tags/schema-registry/</loc>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lowess.github.io/ops-talks/tags/</loc>
+    <lastmod>2020-10-20T12:52:23+08:00</lastmod>
   </url>
   
   <url>
@@ -19,11 +44,6 @@
   
   <url>
     <loc>https://lowess.github.io/ops-talks/tags/ops-talks-01/</loc>
-    <lastmod>2020-08-26T02:46:23+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lowess.github.io/ops-talks/tags/</loc>
     <lastmod>2020-08-26T02:46:23+08:00</lastmod>
   </url>
   

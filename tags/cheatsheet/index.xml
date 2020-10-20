@@ -6,10 +6,34 @@
     <description>Recent content in cheatsheet on Ops-Talks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2020 02:46:23 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 12:52:23 +0800</lastBuildDate>
     
 	<atom:link href="https://lowess.github.io/ops-talks/tags/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ops-Talks #02</title>
+      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-02/</link>
+      <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-02/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;📢 Special thanks to our speaker: &lt;a href=&#34;https://www.linkedin.com/in/karimlamouri/&#34;&gt;Karim Lamouri&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;11-avro---what-is-it-&#34;&gt;1.1 Avro - What is it ?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Avro is used for serialization and deserialization of payloads&lt;/li&gt;
+&lt;li&gt;More compact than &lt;code&gt;JSON&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Is a container file - It has &lt;strong&gt;both&lt;/strong&gt; &lt;code&gt;the schema&lt;/code&gt; and &lt;code&gt;the payload&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Allows RPC calls&lt;/li&gt;
+&lt;li&gt;Fast serialization and smaller than JSON (do not repeat all the JSON keys as the schema is at the top of the file)&lt;/li&gt;
+&lt;li&gt;Allows schema documentation&lt;/li&gt;
+&lt;li&gt;Format easy to leverage on Spark or ETL pipelines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can always deserialize an AVRO file as the schema is embedded in the file itself !&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>Ops-Talks #01</title>

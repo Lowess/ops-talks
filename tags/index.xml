@@ -6,17 +6,44 @@
     <description>Recent content in Tags on Ops-Talks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2020 02:46:23 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 12:52:23 +0800</lastBuildDate>
     
 	<atom:link href="https://lowess.github.io/ops-talks/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>avro</title>
+      <link>https://lowess.github.io/ops-talks/tags/avro/</link>
+      <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/avro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>cheatsheet</title>
       <link>https://lowess.github.io/ops-talks/tags/cheatsheet/</link>
-      <pubDate>Wed, 26 Aug 2020 02:46:23 +0800</pubDate>
+      <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
       
       <guid>https://lowess.github.io/ops-talks/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ops-talks-02</title>
+      <link>https://lowess.github.io/ops-talks/tags/ops-talks-02/</link>
+      <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/ops-talks-02/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>schema-registry</title>
+      <link>https://lowess.github.io/ops-talks/tags/schema-registry/</link>
+      <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/schema-registry/</guid>
       <description></description>
     </item>
     

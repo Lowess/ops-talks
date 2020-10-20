@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>
+    Ops-Talks #02 | Ops-Talks
+  </title>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/ops-talks/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/ops-talks/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/ops-talks/favicon-16x16.png" />
+  <link rel="manifest" href="/ops-talks/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+
+  
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-normalize@0.6.0/modern-normalize.css"
+  />
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.24231c6914ae4bc5922c12958c4f9d9ef9ce805af45d1af0c22e840f4c4bb9b5.css" integrity="sha256-JCMcaRSuS8WSLBKVjE&#43;dnvnOgFr0XRrwwi6ED0xLubU=" />
+
+  
+  
+    
+  
+</head>
+
+    <body>
+        <header id="header">
+  <div class="header_container">
+    <h1 class="sitetitle">
+      <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a>
+    </h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="https://lowess.github.io/ops-talks/">Cheatsheets</a></li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/about/">
+              
+              <span>About</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/tags/">
+              
+              <span>Tags</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/archives/">
+              
+              <span>Archives</span>
+            </a>
+          </li>
+        
+        <li class="hide-sm"><a href="https://lowess.github.io/ops-talks/index.xml" type="application/rss+xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+        
+<section id="main">
+  <article class="post content">
+    
+    <div class="slides">
+      <iframe src="https://slides.com/floriandambrine/ops-talks-02-avro/embed?style=light" width="100%" height="420" scrolling="no" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+    
+
+    <div class="cheatsheet">
+
+      
+
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#11-avro---what-is-it-">1.1 Avro - What is it ?</a></li>
+        <li><a href="#12-avro---basics">1.2 Avro - Basics</a></li>
+        <li><a href="#13-avro---avro-protocol">1.3 Avro - Avro Protocol</a></li>
+        <li><a href="#13-avro---avro-idl---higher-level-representation">1.3 Avro - Avro IDL - Higher level representation</a></li>
+        <li><a href="#21-schema-registry">2.1 Schema Registry</a></li>
+        <li><a href="#22-schema-evolution--compatibility">2.2 Schema Evolution &amp; Compatibility</a></li>
+        <li><a href="#23-schema-evolution--kafka-connect-performances">2.3 Schema Evolution &amp; Kafka-connect performances</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <h2 class="title">Ops-Talks #02</h2>
+
+      <div class="post_content">
+        <blockquote>
+<p>📢 Special thanks to our speaker: <a href="https://www.linkedin.com/in/karimlamouri/">Karim Lamouri</a></p>
+</blockquote>
+<h3 id="11-avro---what-is-it-">1.1 Avro - What is it ?</h3>
+<ul>
+<li>Avro is used for serialization and deserialization of payloads</li>
+<li>More compact than <code>JSON</code></li>
+<li>Is a container file - It has <strong>both</strong> <code>the schema</code> and <code>the payload</code></li>
+<li>Allows RPC calls</li>
+<li>Fast serialization and smaller than JSON (do not repeat all the JSON keys as the schema is at the top of the file)</li>
+<li>Allows schema documentation</li>
+<li>Format easy to leverage on Spark or ETL pipelines</li>
+</ul>
+<blockquote>
+<p>You can always deserialize an AVRO file as the schema is embedded in the file itself !</p>
+</blockquote>
+<h3 id="12-avro---basics">1.2 Avro - Basics</h3>
+<ul>
+<li>Avro Schema</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;namespace&#34;</span><span class="p">:</span> <span class="s2">&#34;com.gumgum.avro.verity&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;record&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Callback&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;fields&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;callback_uuid&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;target_url&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13-avro---avro-protocol">1.3 Avro - Avro Protocol</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;protocol&#34;</span><span class="p">:</span> <span class="s2">&#34;Callback&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;namespace&#34;</span><span class="p">:</span> <span class="s2">&#34;com.gumgum.avro.verity&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;types&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;record&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Callback&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;fields&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;callback_uuid&#34;</span><span class="p">,</span>
+          <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;target_url&#34;</span><span class="p">,</span>
+          <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;messages&#34;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Avro Protocol allows the definition of RPC functions. But this schema is still defined in JSON which is not optimal for reading and documenting</p>
+</blockquote>
+<h3 id="13-avro---avro-idl---higher-level-representation">1.3 Avro - Avro IDL - Higher level representation</h3>
+<ul>
+<li>The AVRO IDL was introduced by the Apache AVRO project</li>
+<li>Much shorter writing</li>
+<li>Similar to <code>C structures</code></li>
+<li>Easy definition of <code>default values</code></li>
+<li>Easy documentation</li>
+<li>Allows <code>import</code></li>
+<li>Automatic generation of Java <a href="https://en.wikipedia.org/wiki/Plain_old_Java_object">POJO</a></li>
+<li><code>POJOs</code> or generated classes objects from <code>AVRO</code> enforce strong consistency on what fields are <code>mandatory</code> / <code>optional</code> or <code>null</code>. This is especially important in a microservice world where events are at the heart of the data flow.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="nd">@namespace</span><span class="o">(</span><span class="s2">&#34;com.gumgum.avro.verity&#34;</span><span class="o">)</span>
+
+<span class="n">protocol</span> <span class="n">Callback</span> <span class="o">{</span>
+  <span class="n">record</span> <span class="n">Callback</span> <span class="o">{</span>
+    <span class="n">string</span> <span class="n">callback_uuid</span><span class="o">;</span>
+    <span class="n">string</span> <span class="n">target_url</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Example with <code>default value</code> and <code>comments</code>:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="hl"><span class="lnt"> 6
+</span></span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="nd">@namespace</span><span class="o">(</span><span class="s2">&#34;com.gumgum.avro.verity&#34;</span><span class="o">)</span>
+
+<span class="n">protocol</span> <span class="n">Callback</span> <span class="o">{</span>
+  <span class="n">record</span> <span class="n">Callback</span> <span class="o">{</span>
+<span class="hl">    <span class="cm">/**
+</span></span><span class="hl"><span class="cm">      This is the documentation for the Callback record
+</span></span><span class="hl"><span class="cm">    **/</span>
+</span><span class="hl">    <span class="n">string</span> <span class="n">callback_uuid</span> <span class="o">=</span> <span class="s1">&#39;uuid&#39;</span><span class="o">;</span>
+</span>    <span class="n">string</span> <span class="n">target_url</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Example with imports</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="hl"><span class="lnt"> 3
+</span></span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="hl"><span class="lnt">12
+</span></span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-groovy" data-lang="groovy"><span class="nd">@namespace</span><span class="o">(</span><span class="s2">&#34;com.gumgum.avro.verity&#34;</span><span class="o">)</span>
+
+<span class="hl"><span class="kn">import</span> <span class="nn">address.idl</span>
+</span>
+<span class="n">protocol</span> <span class="n">Callback</span> <span class="o">{</span>
+  <span class="n">record</span> <span class="n">Callback</span> <span class="o">{</span>
+    <span class="cm">/**
+</span><span class="cm">      This is the documentation for the Callback record
+</span><span class="cm">    **/</span>
+    <span class="n">string</span> <span class="n">callback_uuid</span> <span class="o">=</span> <span class="s1">&#39;uuid&#39;</span><span class="o">;</span>
+    <span class="n">string</span> <span class="n">target_url</span><span class="o">;</span>
+<span class="hl">    <span class="n">Address</span> <span class="n">callback_address</span><span class="o">;</span>
+</span>  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="21-schema-registry">2.1 Schema Registry</h3>
+<ul>
+<li>
+<p><a href="https://docs.confluent.io/current/schema-registry/index.html">Schema registry</a> is an open-source serving layer of AVRO schemas provided by <a href="https://docs.confluent.io/current/">Confluent Platform</a></p>
+</li>
+<li>
+<p>Schema registry is in charge of:</p>
+<ul>
+<li>Registering schemas</li>
+<li>Returning the ID of the schema</li>
+</ul>
+</li>
+<li>
+<p>A <code>schema</code> is a living object (it changes over time, new fields get added / removed / updated)</p>
+</li>
+<li>
+<p>In a Kafka world, AVRO schemas are not sent along with the payload but a <code>&quot;pointer&quot;</code> to the schema is passed down.</p>
+</li>
+<li>
+<p>Kafka libraries (<code>SerDe</code> or <code>Librdkafka</code>) prepends 5 bytes (the <code>&quot;pointer&quot;</code>) to the <code>AVRO binary</code> to inject schema information.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Byte 0</th>
+<th>Byte 1-4</th>
+<th>Byte 5-&hellip;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magic Byte</td>
+<td>4-bytes schema ID as returned by Schema Registry</td>
+<td>Serialized data for the specified schema format</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-schema-evolution--compatibility">2.2 Schema Evolution &amp; Compatibility</h3>
+<table>
+<thead>
+<tr>
+<th>Compatibility Type</th>
+<th>Changes allowed</th>
+<th>Check against which schemas</th>
+<th>Upgrade first</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BACKWARD</td>
+<td>​Delete fields / Add optional fields</td>
+<td>Last version</td>
+<td>​Consumers</td>
+</tr>
+<tr>
+<td>BACKWARD_TRANSITIVE</td>
+<td>Delete fields Add optional fields</td>
+<td>All previous versions</td>
+<td>​Consumers</td>
+</tr>
+<tr>
+<td>FORWARD</td>
+<td>Add fields / Delete optional fields</td>
+<td>Last version</td>
+<td>​Producers</td>
+</tr>
+<tr>
+<td>FORWARD_TRANSITIVE</td>
+<td>Add fields / Delete optional fields</td>
+<td>All previous versions</td>
+<td>​Producers</td>
+</tr>
+<tr>
+<td>FULL</td>
+<td>Add optional fields / Delete optional fields</td>
+<td>Last version</td>
+<td>Any order</td>
+</tr>
+<tr>
+<td>FULL_TRANSITIVE</td>
+<td>Add optional fields / Delete optional fields</td>
+<td>All previous versions</td>
+<td>Any order</td>
+</tr>
+<tr>
+<td>NONE</td>
+<td>All changes are accepted</td>
+<td>Compatibility checking disabled</td>
+<td>Depends</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Tips for easy schema evolution in a non <code>TRANSITIVE</code> world:
+<ul>
+<li>be <code>nullable</code></li>
+<li>have <code>default values</code> (default value can be <code>null</code> as well)</li>
+<li>fields that are <code>nullable</code> and have <code>default values</code> can be removed</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-schema-evolution--kafka-connect-performances">2.3 Schema Evolution &amp; Kafka-connect performances</h3>
+<ul>
+<li>
+<p><a href="https://docs.confluent.io/current/connect/index.html">Kafka-connect</a> is an open-source software from <a href="https://docs.confluent.io/current/">Confluent Platform</a></p>
+</li>
+<li>
+<p>Schema compatibility can directly impact Kafka-connect performance</p>
+</li>
+</ul>
+<blockquote>
+<p>Story behind an outage resulting in 8h worth of data lost&hellip;
+Back in the day a change was made to a Kafka event where the schema compatibility was set to NONE (where it should have been set to FULL or at least BACKWARD). As a result of this event modification, Kafka-connect performance started dropping resulting in a lot a small files being uploaded to S3 impacting Spark jobs from running efficiently.</p>
+</blockquote>
+<ul>
+<li><a href="https://slides.com/floriandambrine/ops-talks-02-avro#/4/4">Checkout the slides to understand the impact of schema compatibility with Kafka-connect</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://avro.apache.org/docs/current/spec.html">AVRO Documentation</a></li>
+</ul>
+      </div>
+      <div class="info post_meta">
+        <time datetime=2020-10-20T12:52:23&#43;0800 class="date">Tuesday, October 20, 2020</time>
+        
+          <ul class="tags">
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/ops-talks-02">ops-talks-02</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/avro">avro</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/schema-registry">schema-registry</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/cheatsheet">cheatsheet</a> </li>
+          
+          </ul>
+        
+        
+      </div>
+      <div class="clearfix"></div>
+    </article>
+    
+      <div class="other_posts">
+        
+        <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-01/" class="prev">Ops-Talks #01</a>
+        
+        
+      </div>
+      <aside id="comments">
+</aside>
+
+    
+    </div>
+</section>
+
+        <a id="back_to_top" title="Go To Top" href="#">
+  <span>
+    <svg viewBox="0 0 24 24">
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+    </svg>
+  </span>
+</a>
+
+        <footer id="footer">
+  <p>
+    <small></small>
+      <span>&copy; 2020 <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a> </span>
+      <span>By Florian Dambrine with <a rel="nofollow" target="_blank" href="https://gohugo.io">Hugo</a></span>
+      <span>Theme <a rel="nofollow" target="_blank" href="https://github.com/wayjam/hugo-theme-mixedpaper">Mixedpaper</a></span>
+    </small>
+  </p>
+
+  <script src="https://lowess.github.io/ops-talks/js/main.min.c6c86ca803000cf08f521fffe0c1aecfa94fbe8765144c590dab0132a347174d.js" integrity="sha256-xshsqAMADPCPUh//4MGuz6lPvodlFExZDasBMqNHF00=" crossorigin="anonymous" async></script>
+</footer>
+
+    </body>
+</html>
