@@ -9,6 +9,14 @@ $theme-bg-highlight: rgba(110,235,131, 0.3);;
 $theme-bg-secondary: rgba(238,238,238, 0.5);
 $theme-bg-dark: #111;
 
+figure.center {
+  text-align: center;
+  img {
+    display: block;
+    margin: 0 auto 0 auto;
+  }
+}
+
 body {
   min-height: 100%;
   display: flex;
@@ -513,13 +521,11 @@ a {
     margin: 0.8em 0;
 
     a {
-      padding: 0px 50% 0px 10px;
       color: $theme-fg-secondary;
       border: 0;
     }
 
     a:hover {
-      padding: 0px 50% 0px 10px;
       background-color: $theme-fg-secondary;
       color: $theme-fg-main;
       border: 0;

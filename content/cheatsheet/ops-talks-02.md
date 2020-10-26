@@ -1,5 +1,7 @@
 ---
-title: "Ops-Talks #02"
+title: "Ops-Talks #02 - AVRO"
+aliases:
+  - "ops-talks-02"
 date: 2020-10-20T12:52:23+08:00
 draft: false
 tags: ["ops-talks-02", "avro", "schema-registry", "cheatsheet"]
