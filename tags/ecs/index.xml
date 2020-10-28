@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ecs on Ops-Talks</title>
+    <link>https://lowess.github.io/ops-talks/tags/ecs/</link>
+    <description>Recent content in ecs on Ops-Talks</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 26 Oct 2020 12:52:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://lowess.github.io/ops-talks/tags/ecs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ops-Talks #03 - K8s Vs ECS</title>
+      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-03/</link>
+      <pubDate>Mon, 26 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-03/</guid>
+      <description>&lt;h3 id=&#34;11-k8s-vs-ecs&#34;&gt;1.1 K8s Vs ECS&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services.
+&lt;strong&gt;It is first and foremost a REST API&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt; &lt;em&gt;(non-exhaustive)&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 Service discovery and load balancing&lt;/li&gt;
+&lt;li&gt;🔹 Storage orchestration&lt;/li&gt;
+&lt;li&gt;🔹 Automated rollouts and rollbacks&lt;/li&gt;
+&lt;li&gt;🔹 Self-healing&lt;/li&gt;
+&lt;li&gt;🔹 Secret and configuration management&lt;/li&gt;
+&lt;li&gt;🔹 &lt;code&gt;kubectl&lt;/code&gt; as a way to interact with the cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ECS is a fully managed container orchestration service&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;🔸 Integrated with AWS services&lt;/li&gt;
+&lt;li&gt;🔸 Easy to pick up / Entry level to container world&lt;/li&gt;
+&lt;li&gt;🔸 Ease of use from GUI + Serveless experience with Fargate&lt;/li&gt;
+&lt;li&gt;🔸 &lt;code&gt;ecs-cli&lt;/code&gt; and &lt;code&gt;aws-cli&lt;/code&gt; as a way to interact with the cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

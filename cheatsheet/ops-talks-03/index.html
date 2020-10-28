@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>
+    Ops-Talks #03 - K8s Vs ECS | Ops-Talks
+  </title>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/ops-talks/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/ops-talks/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/ops-talks/favicon-16x16.png" />
+  <link rel="manifest" href="/ops-talks/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+
+  
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-normalize@0.6.0/modern-normalize.css"
+  />
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.6d92088b2878f89bd5de7fa63ef951e74168e3d3a0e142d39906cd051cb9abb3.css" integrity="sha256-bZIIiyh4&#43;JvV3n&#43;mPvlR50Fo49Og4ULTmQbNBRy5q7M=" />
+
+  
+  
+    
+  
+</head>
+
+    <body>
+        <header id="header">
+  <div class="header_container">
+    <h1 class="sitetitle">
+      <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a>
+    </h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="https://lowess.github.io/ops-talks/">Cheatsheets</a></li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/about/">
+              
+              <span>About</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/tags/">
+              
+              <span>Tags</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/archives/">
+              
+              <span>Archives</span>
+            </a>
+          </li>
+        
+        <li class="hide-sm"><a href="https://lowess.github.io/ops-talks/index.xml" type="application/rss+xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+        
+<section id="main">
+  <article class="post content">
+    
+    <div class="slides">
+      <iframe src="https://slides.com/floriandambrine/ops-talks-03-k8s-vs-ecs/embed?style=light" width="100%" height="420" scrolling="no" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+    
+
+    <div class="cheatsheet">
+
+      
+
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#11-k8s-vs-ecs">1.1 K8s Vs ECS</a></li>
+        <li><a href="#12-main-concepts---terminology">1.2 Main concepts - Terminology</a></li>
+        <li><a href="#21-basic-navigation">2.1 Basic Navigation</a></li>
+        <li><a href="#211-authentication">2.1.1 Authentication</a></li>
+        <li><a href="#212-navigate-clusters--deployments--pods--specs">2.1.2 Navigate Clusters / Deployments / Pods / Specs</a></li>
+        <li><a href="#31-deep-dive---helm">3.1 Deep Dive - Helm</a></li>
+        <li><a href="#32-deep-dive---helmfile">3.2 Deep Dive - Helmfile</a></li>
+        <li><a href="#33-gitops">3.3 GitOps</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <h2 class="title">Ops-Talks #03 - K8s Vs ECS</h2>
+
+      <div class="post_content">
+        <h3 id="11-k8s-vs-ecs">1.1 K8s Vs ECS</h3>
+<blockquote>
+<p>Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services.
+<strong>It is first and foremost a REST API</strong></p>
+</blockquote>
+<ul>
+<li><strong>Features:</strong> <em>(non-exhaustive)</em>
+<ul>
+<li>🔹 Service discovery and load balancing</li>
+<li>🔹 Storage orchestration</li>
+<li>🔹 Automated rollouts and rollbacks</li>
+<li>🔹 Self-healing</li>
+<li>🔹 Secret and configuration management</li>
+<li>🔹 <code>kubectl</code> as a way to interact with the cluster</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>ECS is a fully managed container orchestration service</p>
+</blockquote>
+<ul>
+<li><strong>Features:</strong>
+<ul>
+<li>🔸 Integrated with AWS services</li>
+<li>🔸 Easy to pick up / Entry level to container world</li>
+<li>🔸 Ease of use from GUI + Serveless experience with Fargate</li>
+<li>🔸 <code>ecs-cli</code> and <code>aws-cli</code> as a way to interact with the cluster</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-main-concepts---terminology">1.2 Main concepts - Terminology</h3>
+<figure class="center">
+    <img src="/k8s-ecs-terms.png"
+         alt="ECS Vs K8s - Terminology" width="50%"/> <figcaption>
+            <p>ECS Vs K8s - Terminology</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>Terminology used in ECS and K8s world</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ECS</th>
+<th>K8s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster</td>
+<td>Cluster</td>
+</tr>
+<tr>
+<td>Service &amp; Task definition</td>
+<td>Deployment</td>
+</tr>
+<tr>
+<td>Task</td>
+<td>Pod</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>PersistentVolume</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="21-basic-navigation">2.1 Basic Navigation</h3>
+<ul>
+<li>🚀 <strong>Setup for Kubernetes</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tool / Cli</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html">kubectl (EKS vendored)</a></td>
+<td>Main Kubernetes Cli used to interact with the cluster</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ahmetb/kubectx">kubens / kubectx</a></td>
+<td>(Nice to have) Make it easy to switch clusters or switch between namespaces</td>
+</tr>
+<tr>
+<td><a href="https://k9scli.io/">k9s</a></td>
+<td>K9s is a terminal based UI to interact with Kubernetes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="211-authentication">2.1.1 Authentication</h3>
+<ul>
+<li>Grab EKS configuration</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">aws eks update-kubeconfig --name &lt;CLUSTER_NAME_FROM_EKS&gt; --alias &lt;FRIENDLY_ALIAS&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Switch to <code>verity-prod</code> cluster</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#--- Using kubectx</span>
+kubectx verity-prod
+
+<span class="c1">#--- Native way</span>
+kubectl config set-context verity-prod <span class="se">\
+</span><span class="se"></span>  <span class="o">&amp;&amp;</span> kubectl config use-context verity-prod
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Switch to the namespace <code>default</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#--- Using kubens</span>
+kubens default
+
+<span class="c1">#--- Native way</span>
+kubectl config set-context verity-prod --namespace<span class="o">=</span>default <span class="se">\
+</span><span class="se"></span>  <span class="o">&amp;&amp;</span> kubectl config use-context verity-prod
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="212-navigate-clusters--deployments--pods--specs">2.1.2 Navigate Clusters / Deployments / Pods / Specs</h3>
+<ul>
+<li>These are  a really good resource, no need to bake one more 😃
+<ul>
+<li><a href="https://cheatsheet.dennyzhang.com/cheatsheet-kubernetes-A4">Denny Zhang - Kubernetes Cheatsheet</a> (<a href="https://github.com/dennyzhang/cheatsheet-kubernetes-A4/blob/master/cheatsheet-kubernetes-A4.pdf">PDF version</a>)</li>
+<li><a href="https://codefresh.io/kubernetes-tutorial/kubernetes-cheat-sheet/">Codefresh - Cheatsheet</a></li>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/">Official Kubernetes Cheatsheet Documentation</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="31-deep-dive---helm">3.1 Deep Dive - Helm</h3>
+<blockquote>
+<p><code>Helm</code> is a package manager for kubernetes &ndash;  Helm is your new ecs-cli&hellip;</p>
+</blockquote>
+<ul>
+<li>
+<p>A chart is a collection of files that describe a related set of Kubernetes resources.</p>
+</li>
+<li>
+<p>A chart is made of Go templates</p>
+</li>
+<li>
+<p>A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ helm create ops-talks
+  Creating ops-talks
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Layout of a chart:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tree of the created chart</span>
+$ tree ops-talks
+
+ops-talks
+├── Chart.yaml
+├── charts
+├── templates
+│   ├── NOTES.txt
+│   ├── _helpers.tpl
+│   ├── deployment.yaml
+│   ├── hpa.yaml
+│   ├── ingress.yaml
+│   ├── service.yaml
+│   ├── serviceaccount.yaml
+│   └── tests
+│       └── test-connection.yaml
+└── values.yaml
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Helm charts can be fetched from open source git repositories, here are a few examples:</p>
+<ul>
+<li><a href="%E2%80%8Bhttps://github.com/helm/charts/">helm install stable/&laquo;chart&raquo;</a></li>
+<li><a href="https://github.com/confluentinc/cp-helm">helm install cp-helm/&laquo;chart&raquo;</a></li>
+<li><a href="https://github.com/jenkinsci/helm-charts">helm install jenkinsci/&laquo;chart&raquo;</a></li>
+<li><a href="https://github.com/Lowess/helm-charts">helm install lowess/&laquo;chart&raquo;</a></li>
+</ul>
+</li>
+<li>
+<p><code>Helm</code> 🚰 <code>hydrates</code> a Chart using values contained in <code>values.yaml</code>. Overrides can be defined allowing you to change the default behavior of the chart.</p>
+</li>
+</ul>
+<h3 id="32-deep-dive---helmfile">3.2 Deep Dive - Helmfile</h3>
+<blockquote>
+<p><code>Helmfile</code> is a wrapper on top of helm &ndash;  Helmfile is what Terragrunt is to Terraform&hellip;</p>
+</blockquote>
+<ul>
+<li>
+<p><code>Helm</code> is a great tool for <strong>templating and sharing K8s manifests</strong>&hellip;  However it can become quite cumbersome to install larger multi-tier applications or groups of applications across multiple Kubernetes clusters.</p>
+</li>
+<li>
+<p>Give each Helm chart its own <code>helmfile.yaml</code> and include them recursively in a <strong>centralized</strong> <code>helmfile.yaml</code>.</p>
+</li>
+<li>
+<p>Separate out environment specific values from general values. Often you’ll find while a Helm chart can take 50 different values, only a few actually differ between your environments.</p>
+</li>
+<li>
+<p>As well as providing a set of values, either Environment specific or otherwise, you can also read Environment Variables, Execute scripts and read their output (Fetch a secret from AWS SSM)</p>
+</li>
+<li>
+<p>Store remote state in git/s3/fileshare/etc in much the same way as Terraform does.</p>
+</li>
+<li>
+<p><code>helmfile</code> project layout:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">helmfile.yaml
+environments.yaml
+releases
+├── kafka-lag-reporting
+│   ├── README.md
+│   ├── helmfile.yaml
+│   └── values
+│       ├── ai-kafka-lag-reporting--production.yaml
+│       ├── ai-kafka-lag-reporting--staging.yaml
+│       └── kafka-lag-reporting--production.yaml
+├── kafka-manager
+│   ├── helmfile.yaml
+│   └── values
+│       └── kafka-manager--production.yaml
+├── prometheus
+│   ├── helmfile.yaml
+│   └── values
+│       ├── prometheus-mle--production.yaml
+│       ├── prometheus-nlp--production.yaml
+│       └── prometheus-verity--production.yaml
+└── zoonavigator
+    ├── helmfile.yaml
+    └── values
+        └── verity-zoonavigator--production.yaml
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Sample content of an <code>helmfile.yaml</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">bases</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- ../../environments.yaml<span class="w">
+</span><span class="w">
+</span><span class="w"></span>---<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">repositories</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># Use Lowess (Florian Dambrine) OSS helm chart repo</span><span class="w">
+</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>lowess-helm<span class="w">
+</span><span class="w">    </span><span class="k">url</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//lowess.github.io/helm-charts<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">templates</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">default</span><span class="p">:</span><span class="w"> </span><span class="cp">&amp;default</span><span class="w">
+</span><span class="w">    </span><span class="k">chart</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;lowess-helm/karrot&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">missingFileHandler</span><span class="p">:</span><span class="w"> </span>Error<span class="w">
+</span><span class="w">    </span><span class="k">namespace</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;monitoring&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">labels</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span><span class="k">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.1.3&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">wait</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">    </span><span class="k">installed</span><span class="p">:</span><span class="w"> </span>{{<span class="w"> </span>and<span class="w"> </span>(env<span class="w"> </span><span class="s2">&#34;KAFKA_LAG_REPORTING_INSTALLED&#34;</span><span class="w"> </span>|<span class="w"> </span>default<span class="w"> </span><span class="s2">&#34;true&#34;</span>)<span class="w"> </span>}}<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">releases</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ai-kafka-lag-reporting--{{ .Environment.Name }}&#34;</span><span class="w">
+</span><span class="w">    </span><span class="k">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="cp">*default</span><span class="w">
+</span><span class="w">    </span><span class="k">values</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="s2">&#34;./values/{{`{{ .Release.Name }}`}}.yaml&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-gitops">3.3 GitOps</h3>
+<p><code>GitOps</code> is a way to do Kubernetes cluster management and application delivery.  It works by <strong>using Git as a single source of truth for declarative infrastructure and applications</strong>.</p>
+<p>With GitOps, the use of software agents can alert on any divergence between Git with what&rsquo;s running in a cluster, and if there&rsquo;s a difference, Kubernetes reconcilers automatically update or rollback the cluster depending on the case. With Git at the center of your delivery pipelines, developers use familiar tools to make pull requests to accelerate and simplify both application deployments and operations tasks to Kubernetes.</p>
+<blockquote>
+<p>Read more about GitOps on <a href="https://www.weave.works/technologies/gitops/">Weaveworks blogpost</a></p>
+</blockquote>
+<p><img src="https://images.contentstack.io/v3/assets/blt300387d93dabf50e/blt15812c9fe056ba3b/5ce4448f32fd88a3767ee9a3/what-is-gitops-2.png" alt="GitOps"></p>
+<blockquote>
+<p>#1 THE ENTIRE SYSTEM DESCRIBED DECLARATIVELY</p>
+</blockquote>
+<blockquote>
+<p>#2 THE CANONICAL DESIRED SYSTEM STATE VERSIONED IN GIT</p>
+</blockquote>
+<blockquote>
+<p>#3 APPROVED CHANGES THAT CAN BE AUTOMATICALLY APPLIED TO THE SYSTEM</p>
+</blockquote>
+<blockquote>
+<p>#4 SOFTWARE AGENTS TO ENSURE CORRECTNESS AND ALERT ON DIVERGENCE.</p>
+</blockquote>
+      </div>
+      <div class="info post_meta">
+        <time datetime=2020-10-26T12:52:23&#43;0800 class="date">Monday, October 26, 2020</time>
+        
+          <ul class="tags">
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/cheatsheet">cheatsheet</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/ops-talks-03">ops-talks-03</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/k8s">k8s</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/kubernetes">kubernetes</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/helm">helm</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/ecs">ecs</a> </li>
+          
+          </ul>
+        
+        
+      </div>
+      <div class="clearfix"></div>
+    </article>
+    
+      <div class="other_posts">
+        
+        <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-02/" class="prev">Ops-Talks #02 - AVRO</a>
+        
+        
+      </div>
+      <aside id="comments">
+</aside>
+
+    
+    </div>
+</section>
+
+        <a id="back_to_top" title="Go To Top" href="#">
+  <span>
+    <svg viewBox="0 0 24 24">
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+    </svg>
+  </span>
+</a>
+
+        <footer id="footer">
+  <p>
+    <small></small>
+      <span>&copy; 2020 <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a> </span>
+      <span>By Florian Dambrine with <a rel="nofollow" target="_blank" href="https://gohugo.io">Hugo</a></span>
+      <span>Theme <a rel="nofollow" target="_blank" href="https://github.com/wayjam/hugo-theme-mixedpaper">Mixedpaper</a></span>
+    </small>
+  </p>
+
+  <script src="https://lowess.github.io/ops-talks/js/main.min.c6c86ca803000cf08f521fffe0c1aecfa94fbe8765144c590dab0132a347174d.js" integrity="sha256-xshsqAMADPCPUh//4MGuz6lPvodlFExZDasBMqNHF00=" crossorigin="anonymous" async></script>
+</footer>
+
+    </body>
+</html>

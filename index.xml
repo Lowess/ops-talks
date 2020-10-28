@@ -12,7 +12,45 @@
     
     
     <item>
-      <title>Ops-Talks #02</title>
+      <title>Ops-Talks #03 - K8s Vs ECS</title>
+      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-03/</link>
+      <pubDate>Mon, 26 Oct 2020 12:52:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-03/</guid>
+      <description>&lt;h3 id=&#34;11-k8s-vs-ecs&#34;&gt;1.1 K8s Vs ECS&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services.
+&lt;strong&gt;It is first and foremost a REST API&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt; &lt;em&gt;(non-exhaustive)&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 Service discovery and load balancing&lt;/li&gt;
+&lt;li&gt;🔹 Storage orchestration&lt;/li&gt;
+&lt;li&gt;🔹 Automated rollouts and rollbacks&lt;/li&gt;
+&lt;li&gt;🔹 Self-healing&lt;/li&gt;
+&lt;li&gt;🔹 Secret and configuration management&lt;/li&gt;
+&lt;li&gt;🔹 &lt;code&gt;kubectl&lt;/code&gt; as a way to interact with the cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ECS is a fully managed container orchestration service&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;🔸 Integrated with AWS services&lt;/li&gt;
+&lt;li&gt;🔸 Easy to pick up / Entry level to container world&lt;/li&gt;
+&lt;li&gt;🔸 Ease of use from GUI + Serveless experience with Fargate&lt;/li&gt;
+&lt;li&gt;🔸 &lt;code&gt;ecs-cli&lt;/code&gt; and &lt;code&gt;aws-cli&lt;/code&gt; as a way to interact with the cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ops-Talks #02 - AVRO</title>
       <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-02/</link>
       <pubDate>Tue, 20 Oct 2020 12:52:23 +0800</pubDate>
       
@@ -36,7 +74,7 @@
     </item>
     
     <item>
-      <title>Ops-Talks #01</title>
+      <title>Ops-Talks #01 - Terraform</title>
       <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-01/</link>
       <pubDate>Wed, 26 Aug 2020 02:46:23 +0800</pubDate>
       
@@ -57,9 +95,9 @@
       
       <guid>https://lowess.github.io/ops-talks/about/</guid>
       <description>About Ops-Talks  Ops-Talks comes from a desire to knowledge transfert +6 years worth of Ops knowledge / practice / tips &amp;amp; tricks to my fellow GumGum teammates.
-  About Me I am a Principal Engineer graduated from UTC (University of Technology of Compiègne FRANCE) working as part of the Machine Learning Engineering team at GumGum, a digital marketing platform for the visual web based in Santa Monica (CA).
+  About the Author I am a Principal Engineer graduated from UTC (University of Technology of Compiègne FRANCE) working as part of the Machine Learning Engineering team at GumGum, a digital marketing platform for the visual web based in Santa Monica (CA).
 Over all, I love evolving with cutting edges technologies in order to tackle new challenges at scale !
-What to learn more about myself&amp;hellip; Give a tour to </description>
+ What to learn more about myself&amp;hellip; Give a tour to http://floriandambrine.</description>
     </item>
     
   </channel>
