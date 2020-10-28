@@ -234,3 +234,7 @@ With GitOps, the use of software agents can alert on any divergence between Git 
 > #3 APPROVED CHANGES THAT CAN BE AUTOMATICALLY APPLIED TO THE SYSTEM
 
 > #4 SOFTWARE AGENTS TO ENSURE CORRECTNESS AND ALERT ON DIVERGENCE.
+
+### :the_horns: Tips and Tricks
+
+* [kubectl shortcuts :heart: (this is gold)](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/kubectl)
