@@ -1,5 +1,7 @@
 ---
-title: "Ops-Talks #01"
+title: "Ops-Talks #01 - Terraform"
+aliases:
+  - "ops-talks-01"
 date: 2020-08-26T02:46:23+08:00
 draft: false
 tags: ["ops-talks-01", "terraform", "cheatsheet"]
