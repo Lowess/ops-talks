@@ -6,10 +6,22 @@
     <description>Recent content in Cheatsheets on Ops-Talks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2020 12:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jan 2021 17:17:23 +0800</lastBuildDate>
     
 	<atom:link href="https://lowess.github.io/ops-talks/cheatsheet/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ops-Talks #04 - Hugo &amp; Preact</title>
+      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-04/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-04/</guid>
+      <description>&lt;h3 id=&#34;11-what-is-hugo&#34;&gt;1.1 What is &lt;code&gt;Hugo&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;🤞 Coming soon&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>Ops-Talks #03 - K8s Vs ECS</title>

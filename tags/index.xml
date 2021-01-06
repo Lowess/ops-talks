@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Ops-Talks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2020 12:52:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jan 2021 17:17:23 +0800</lastBuildDate>
     
 	<atom:link href="https://lowess.github.io/ops-talks/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,54 @@
     <item>
       <title>cheatsheet</title>
       <link>https://lowess.github.io/ops-talks/tags/cheatsheet/</link>
-      <pubDate>Mon, 26 Oct 2020 12:52:23 +0800</pubDate>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
       
       <guid>https://lowess.github.io/ops-talks/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drone</title>
+      <link>https://lowess.github.io/ops-talks/tags/drone/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://lowess.github.io/ops-talks/tags/hugo/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ops-talks-04</title>
+      <link>https://lowess.github.io/ops-talks/tags/ops-talks-04/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/ops-talks-04/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>preact</title>
+      <link>https://lowess.github.io/ops-talks/tags/preact/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/preact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssg</title>
+      <link>https://lowess.github.io/ops-talks/tags/ssg/</link>
+      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/ssg/</guid>
       <description></description>
     </item>
     
