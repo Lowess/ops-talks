@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Ops-Talks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Jan 2021 17:17:23 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Apr 2021 08:17:23 +0000</lastBuildDate>
     
 	<atom:link href="https://lowess.github.io/ops-talks/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,45 @@
     <item>
       <title>cheatsheet</title>
       <link>https://lowess.github.io/ops-talks/tags/cheatsheet/</link>
-      <pubDate>Wed, 06 Jan 2021 17:17:23 +0800</pubDate>
+      <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
       
       <guid>https://lowess.github.io/ops-talks/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>confluent</title>
+      <link>https://lowess.github.io/ops-talks/tags/confluent/</link>
+      <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/confluent/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kafka</title>
+      <link>https://lowess.github.io/ops-talks/tags/kafka/</link>
+      <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>messaging</title>
+      <link>https://lowess.github.io/ops-talks/tags/messaging/</link>
+      <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/messaging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ops-talks-05</title>
+      <link>https://lowess.github.io/ops-talks/tags/ops-talks-05/</link>
+      <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
+      
+      <guid>https://lowess.github.io/ops-talks/tags/ops-talks-05/</guid>
       <description></description>
     </item>
     
