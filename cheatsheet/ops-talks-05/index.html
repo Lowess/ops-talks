@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>
+    Ops-Talks #05 - Kafka | Ops-Talks
+  </title>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/ops-talks/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/ops-talks/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/ops-talks/favicon-16x16.png" />
+  <link rel="manifest" href="/ops-talks/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+
+  
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/modern-normalize@0.6.0/modern-normalize.css"
+  />
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://lowess.github.io/ops-talks/style.min.6d92088b2878f89bd5de7fa63ef951e74168e3d3a0e142d39906cd051cb9abb3.css" integrity="sha256-bZIIiyh4&#43;JvV3n&#43;mPvlR50Fo49Og4ULTmQbNBRy5q7M=" />
+
+  
+  
+    
+  
+</head>
+
+    <body>
+        <header id="header">
+  <div class="header_container">
+    <h1 class="sitetitle">
+      <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a>
+    </h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="https://lowess.github.io/ops-talks/">Cheatsheets</a></li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/about/">
+              
+              <span>About</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/tags/">
+              
+              <span>Tags</span>
+            </a>
+          </li>
+        
+          <li>
+            <a href="https://lowess.github.io/ops-talks/archives/">
+              
+              <span>Archives</span>
+            </a>
+          </li>
+        
+        <li class="hide-sm"><a href="https://lowess.github.io/ops-talks/index.xml" type="application/rss+xml">RSS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+        
+<section id="main">
+  <article class="post content">
+    
+    <div class="slides">
+      <iframe src="https://slides.com/floriandambrine/ops-talks-05-kafka/embed?style=light" width="100%" height="420" scrolling="no" frameborder="0"
+        webkitallowfullscreen mozallowfullscreen allowfullscreen>
+      </iframe>
+    </div>
+    
+
+    <div class="cheatsheet">
+
+      
+
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#kafka-listeners">Kafka Listeners</a></li>
+        <li><a href="#kafka-partitioning">Kafka Partitioning</a></li>
+        <li><a href="#kafka-tips--tricks">Kafka Tips &amp; Tricks</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+      <h2 class="title">Ops-Talks #05 - Kafka</h2>
+
+      <div class="post_content">
+        <h3 id="kafka-listeners">Kafka Listeners</h3>
+<p>While developing in a <strong>Docker</strong> environment it&rsquo;s important to get a good understanding of Kafka listeners / advertised listeners. This notion is really well explained in this article: <a href="https://www.confluent.io/blog/kafka-listeners-explained/">Kafka Listeners Explained</a></p>
+<figure class="center">
+    <img src="https://github.com/Lowess/kafka-listeners-explained/blob/master/kafka-listeners.png?raw=true"/> 
+</figure>
+
+<blockquote>
+<p>You need to set advertised.listeners (or <code>KAFKA_ADVERTISED_LISTENERS</code> if you’re using Docker images) to the external address (host/IP) so that clients can correctly connect to it. Otherwise, they’ll try to connect to the internal host address—and if that’s not reachable, then problems ensue.</p>
+</blockquote>
+<p>You can also use this Github repository to play around with this notion:</p>
+<ul>
+<li><a href="https://github.com/Lowess/kafka-listeners-explained">https://github.com/Lowess/kafka-listeners-explained</a></li>
+</ul>
+<h3 id="kafka-partitioning">Kafka Partitioning</h3>
+<p>Here is a common rule of thumb for parition sizing in a Kafka cluster</p>
+<blockquote>
+<p>Every use case deserve its own reflexion&hellip; Do not apply these settings blindly</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Partition Sizing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common</td>
+<td>8 - 16</td>
+</tr>
+<tr>
+<td>Big topics</td>
+<td>120 - 200</td>
+</tr>
+<tr>
+<td><strong>You&rsquo;re wrong</strong></td>
+<td>&gt;200</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kafka-tips--tricks">Kafka Tips &amp; Tricks</h3>
+<p><a href="https://github.com/birdayz/kaf">https://github.com/birdayz/kaf</a> is an amazingly easy Kafka client to use and install</p>
+<p>If you feel lazy installing it, run it in docker:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">alias</span> <span class="nv">kaf</span><span class="o">=</span><span class="s2">&#34;docker run --entrypoint=&#34;&#34; -v ~/.kaf:/root/.kaf -it lowess/kaf bash&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Here are a couple of <strong>tips and tricks</strong> you can do with this cli:</p>
+<ul>
+<li>Consume the content <code>&lt;TOPIC&gt;</code> and copy it to a file</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kaf consume &lt;TOPIC&gt; --offset latest 2&gt;/dev/null <span class="p">|</span> tee /tmp/kafka-stream.log
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Consume the content <code>&lt;TOPIC&gt;</code> and generate reformat payload to keep url and uuid only</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kaf consume &lt;TOPIC&gt; 2&gt;/dev/null <span class="p">|</span> jq <span class="s1">&#39;. | {&#34;url&#34;: .url, &#34;uuid&#34;: .uuid}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Send each line from <code>&lt;FILE&gt;</code> as individual records to <code>&lt;TOPIC&gt;</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat &lt;FILE&gt; <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$line</span> <span class="p">|</span> kaf produce &lt;TOPIC&gt;<span class="p">;</span> <span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="resources">Resources</h3>
+<ul>
+<li>👍 <a href="https://www.confluent.io/blog/kafka-listeners-explained/">Kafka Listeners Explained</a></li>
+<li>👍 <a href="https://medium.com/streamthoughts/apache-kafka-rebalance-protocol-or-the-magic-behind-your-streams-applications-e94baf68e4f2">Apache Kafka Rebalance Protocol, or the magic behind your streams applications</a></li>
+</ul>
+      </div>
+      <div class="info post_meta">
+        <time datetime=2021-04-19T08:17:23Z class="date">Monday, April 19, 2021</time>
+        
+          <ul class="tags">
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/cheatsheet">cheatsheet</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/ops-talks-05">ops-talks-05</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/kafka">kafka</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/messaging">messaging</a> </li>
+          
+            <li> <a href="https://lowess.github.io/ops-talks/tags/confluent">confluent</a> </li>
+          
+          </ul>
+        
+        
+      </div>
+      <div class="clearfix"></div>
+    </article>
+    
+      <div class="other_posts">
+        
+        <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-04/" class="prev">Ops-Talks #04 - Hugo &amp; Preact</a>
+        
+        
+      </div>
+      <aside id="comments">
+</aside>
+
+    
+    </div>
+</section>
+
+        <a id="back_to_top" title="Go To Top" href="#">
+  <span>
+    <svg viewBox="0 0 24 24">
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
+    </svg>
+  </span>
+</a>
+
+        <footer id="footer">
+  <p>
+    <small></small>
+      <span>&copy; 2021 <a href="https://lowess.github.io/ops-talks/" title="Ops-Talks">Ops-Talks</a> </span>
+      <span>By Florian Dambrine with <a rel="nofollow" target="_blank" href="https://gohugo.io">Hugo</a></span>
+      <span>Theme <a rel="nofollow" target="_blank" href="https://github.com/wayjam/hugo-theme-mixedpaper">Mixedpaper</a></span>
+    </small>
+  </p>
+
+  <script src="https://lowess.github.io/ops-talks/js/main.min.c6c86ca803000cf08f521fffe0c1aecfa94fbe8765144c590dab0132a347174d.js" integrity="sha256-xshsqAMADPCPUh//4MGuz6lPvodlFExZDasBMqNHF00=" crossorigin="anonymous" async></script>
+</footer>
+
+    </body>
+</html>

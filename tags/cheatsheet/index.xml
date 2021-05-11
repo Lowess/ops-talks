@@ -13,14 +13,23 @@
     
     <item>
       <title>Ops-Talks #05 - Kafka</title>
-      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05-kafka/</link>
+      <link>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05/</link>
       <pubDate>Mon, 19 Apr 2021 08:17:23 +0000</pubDate>
       
-      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05-kafka/</guid>
-      <description>&lt;h3 id=&#34;11-kafka-tools&#34;&gt;1.1 Kafka Tools&lt;/h3&gt;
+      <guid>https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05/</guid>
+      <description>&lt;h3 id=&#34;kafka-listeners&#34;&gt;Kafka Listeners&lt;/h3&gt;
+&lt;p&gt;While developing in a &lt;strong&gt;Docker&lt;/strong&gt; environment it&amp;rsquo;s important to get a good understanding of Kafka listeners / advertised listeners. This notion is really well explained in this article: &lt;a href=&#34;https://www.confluent.io/blog/kafka-listeners-explained/&#34;&gt;Kafka Listeners Explained&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&#34;center&#34;&gt;
+    &lt;img src=&#34;https://github.com/Lowess/kafka-listeners-explained/blob/master/kafka-listeners.png?raw=true&#34;/&gt; 
+&lt;/figure&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;🤞 Coming soon&amp;hellip;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+&lt;p&gt;You need to set advertised.listeners (or &lt;code&gt;KAFKA_ADVERTISED_LISTENERS&lt;/code&gt; if you’re using Docker images) to the external address (host/IP) so that clients can correctly connect to it. Otherwise, they’ll try to connect to the internal host address—and if that’s not reachable, then problems ensue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can also use this Github repository to play around with this notion:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Lowess/kafka-listeners-explained&#34;&gt;https://github.com/Lowess/kafka-listeners-explained&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>

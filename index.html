@@ -83,18 +83,27 @@
     <article class="post content">
       <time datetime="2021-04-19T08:17:23Z" class="date">Mon, Apr 19, 2021</time>
       <h3 class="title">
-        <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05-kafka/" title="Ops-Talks #05 - Kafka">Ops-Talks #05 - Kafka</a>
+        <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05/" title="Ops-Talks #05 - Kafka">Ops-Talks #05 - Kafka</a>
       </h3>
 
       <div class="post_content summary">
-        <h3 id="11-kafka-tools">1.1 Kafka Tools</h3>
+        <h3 id="kafka-listeners">Kafka Listeners</h3>
+<p>While developing in a <strong>Docker</strong> environment it&rsquo;s important to get a good understanding of Kafka listeners / advertised listeners. This notion is really well explained in this article: <a href="https://www.confluent.io/blog/kafka-listeners-explained/">Kafka Listeners Explained</a></p>
+<figure class="center">
+    <img src="https://github.com/Lowess/kafka-listeners-explained/blob/master/kafka-listeners.png?raw=true"/> 
+</figure>
+
 <blockquote>
-<p>🤞 Coming soon&hellip;</p>
+<p>You need to set advertised.listeners (or <code>KAFKA_ADVERTISED_LISTENERS</code> if you’re using Docker images) to the external address (host/IP) so that clients can correctly connect to it. Otherwise, they’ll try to connect to the internal host address—and if that’s not reachable, then problems ensue.</p>
 </blockquote>
+<p>You can also use this Github repository to play around with this notion:</p>
+<ul>
+<li><a href="https://github.com/Lowess/kafka-listeners-explained">https://github.com/Lowess/kafka-listeners-explained</a></li>
+</ul>
         
           <hr />
           <p style="display: flex; justify-content: center;">
-            <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05-kafka/">
+            <a href="https://lowess.github.io/ops-talks/cheatsheet/ops-talks-05/">
               <button class="readmore">View Cheatsheet for Ops-Talks #05 - Kafka ...</button>
             </a>
           </p>
